@@ -1,14 +1,16 @@
 from bs4 import BeautifulSoup as bs
 import time
 import requests
+import pymongo
 from splinter import Browser
 import pandas as pd
 import warnings
 
 warnings.filterwarnings('ignore')
 
+mars_content = {}
+
 def scrape():
-    mars_content = {}
     
     ### NASA Mars News
     url = 'https://mars.nasa.gov/news/'
@@ -91,8 +93,6 @@ def scrape():
 
         browser.visit(url4)
 
-    browser.quit()
-
     mars_content = {
         "news_title": title,
         "news_p": news_p,
@@ -100,5 +100,7 @@ def scrape():
         "html_table": html_table,
         "hemeispheres": dict_list
     }
+
+    browser.quit()
 
     return mars_content
