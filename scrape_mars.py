@@ -11,12 +11,12 @@ warnings.filterwarnings('ignore')
 mars_content = {}
 
 def scrape():
-    
-    ### NASA Mars News
-    url = 'https://mars.nasa.gov/news/'
 
     executable_path = {'executable_path': 'c:/bin/chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
+    
+    ### NASA Mars News
+    url = 'https://mars.nasa.gov/news/'
 
     browser.visit(url)
     html = browser.html
